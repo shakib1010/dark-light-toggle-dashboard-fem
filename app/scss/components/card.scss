@@ -1,5 +1,134 @@
-@use '../util' as *;
+@use "../util" as *;
 
 .cards {
-  font-size: rem(2);
+  font-size: 1rem;
+  display: grid;
+  gap: rem(20);
+
+  @include breakpoint(medium) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint(large) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  position: relative;
+  background-color: var(--card-bg);
+  padding: rem(25);
+  border-radius: rem(8);
+  overflow: hidden;
+
+  &__main::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: rem(5);
+    background-color: gray;
+  }
+
+  &--facebook::before {
+    background: var(--facebook);
+  }
+
+  &--instagram::before {
+    background: linear-gradient(
+      225deg,
+      var(--instagram-end),
+      var(--instagram-middle) 50.91%,
+      var(--instagram-start) 100%
+    );
+  }
+
+  &--twitter::before {
+    background: var(--twitter);
+  }
+
+  &--youtube::before {
+    background: var(--youtube);
+  }
+
+  &__platform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: rem(12);
+    margin-bottom: rem(20);
+  }
+
+  &__icon {
+    width: rem(24);
+    height: rem(24);
+  }
+
+  &__username {
+    font-weight: 700;
+    color: var(--text-color1);
+    font-size: rem(14);
+  }
+
+  &__followers {
+    text-align: center;
+    margin-bottom: rem(24);
+  }
+
+  &__count {
+    font-weight: 700;
+    color: var(--text-color2);
+
+    &--big {
+      font-size: rem(56);
+    }
+
+    &--small {
+      font-size: rem(32);
+    }
+  }
+
+  &__label {
+    text-transform: uppercase;
+    letter-spacing: rem(3);
+    color: var(--text-color1);
+  }
+
+  &__change {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: rem(5);
+
+    &__icon {
+      width: rem(8);
+    }
+
+    &__number {
+      font-size: rem(14);
+      font-weight: 700;
+      color: var(--text-color1);
+    }
+  }
+
+  // Second card design
+  .card__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: rem(20);
+  }
+
+  &__stats-type {
+    font-weight: 700;
+    color: var(--text-color1);
+    font-size: rem(14);
+  }
+
+  .card__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
 }
